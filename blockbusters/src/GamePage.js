@@ -3,7 +3,6 @@ import './GamePage.css';
 import QuestionBox from './QuestionBox.js';
 
 class GamePage extends React.Component {
-
   render() {
     return <Board /> ;
   }
@@ -13,43 +12,55 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: <Hexagon color="hexagon-grey" number="1" onClick={() => this.handleClick(false)} />
-    }
-  }
-
-  handleClick(isAnswer){
-    if (isAnswer) {
-        this.setState({value: <Hexagon color="hexagon-grey" number="1" onClick={() => this.handleClick(false)} />})
-    } else {
-        this.setState({value: <QuestionBox onClick={() => this.handleClick(true)} />})
-    }
-  }
-
-    render () {
-      console.log("in Board")
-        return (
-          <div>
-            {this.state.value}
-          </div>
-        );
-  }
-}
-
-class Hexagon extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null
+      squares: Array(9).fill(null),
     };
+  }
+
+  handleClick() {
+    <QuestionBox />
+    //const squares = this.state.squares.slice();
+    //this.setState({squares: squares});
+  }
+
+  renderSquare(i) {
+    return (
+      <Square
+      value={i+1}
+      onClick={() => this.handleClick()}
+      />
+    );
   }
 
   render() {
     return (
-      <div className={this.props.color} onClick={this.props.onClick}> <span></span>
-        {this.props.number}
-        {this.state.value}
+      <div>
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
       </div>
+    );
+  }
+}
+
+
+class Square extends React.Component {
+  render() {
+    return(
+    <button className="square" onClick={this.props.onClick}>
+      {this.props.value}
+    </button>
     );
   }
 }
