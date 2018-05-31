@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-from setuptools.command.build_ext import build_ext as _build_ext
 
 setup(
     name='blockbusters-api-server',
@@ -19,7 +18,8 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'test_pose_metrics=pose_metrics.test:main'
+            'blockbusters_api_server=blockbusters.app:main',
+            'blockbusters_api_manage=blockbusters.scripts.manage:main'
         ],
     },
     package_dir={
