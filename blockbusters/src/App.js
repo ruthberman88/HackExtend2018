@@ -1,29 +1,25 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import LandingPage from './LandingPage.js'
+import GamePage from './GamePage.js'
 import './App.css';
 
 
 class App extends Component {
-  renderLandingPage () {
-    console.log('omg')
-    return <LandingPage />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: <LandingPage onClick={() => this.handleClick()}/>
+    };
   }
+
+  handleClick() {
+    this.setState({value: <GamePage/>})
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-        {this.renderLandingPage()}
-        </p>
-      </div>
-    );
+    console.log("App")
+    console.log(this)
+    return this.state.value;
   }
 }
 

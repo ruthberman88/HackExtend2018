@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './UserCounter.css';
 
 class UserCounter extends React.Component {

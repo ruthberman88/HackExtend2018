@@ -1,19 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './LandingPage.css';
 import UserCounter from './UserCounter.js'
 
 class LandingPage extends React.Component {
 
   render() {
+    console.log("LandingPage")
+    console.log(this)
     return (
       <div className="LandingPage">
-        <p className="App-intro">
           This is the link you need
           <TeamBox />
           <TeamBox />
-          <StartButton />
-        </p>
+          <StartButton onClick={this.props.onClick}/>
       </div>
     );
   }
@@ -33,8 +32,10 @@ class TeamBox extends React.Component {
 
 class StartButton extends React.Component {
   render() {
+    console.log("start button")
+    console.log(this)
     return (
-      <button className="startButton" onClick={() => alert('click')}>
+      <button className="startButton" onClick={this.props.onClick}>
       </button>
     );
   }
