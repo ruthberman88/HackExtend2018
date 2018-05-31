@@ -1,3 +1,45 @@
 .QuestionBox {
   text-align: center;
 }
+
+.QuestionBox-teamBox-blue {
+  background-color: blue;
+  width: 100px;
+  height: 100px;
+  margin: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.QuestionBox-teamBox-red {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+  margin: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+#wrap{
+width: 400px;
+height: 100px;
+background-color: white;
+border: 1px solid white;
+float: right;
+margin: 25px;
+}
+.race-class:nth-child(odd){
+width: 20%;
+height: 100px;
+background-color: red;
+float: right;
+}
+.race-class:nth-child(even){
+width: 20%;
+height: 100px;
+background-color: blue;
+float: right;
+margin-right: 10px;
+}

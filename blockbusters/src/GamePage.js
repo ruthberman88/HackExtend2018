@@ -10,19 +10,22 @@ class GamePage extends React.Component {
 }
 
 class Board extends React.Component {
-  /*constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-      Hexagon: Array(9).fill(null),
+      value: <Hexagon color="hexagon-grey" number="1" onClick={() => this.handleClick()} />
     }
-  }*/
+  }
+
+  handleClick(){
+    this.setState({value: <QuestionBox/>})
+  }
 
     render () {
       console.log("in Board")
         return (
           <div>
-          <Hexagon color="hexagon-grey" number="1"/>
-          <Hexagon color="hexagon-blue" number="2"/>
+            {this.state.value}
           </div>
         );
   }
@@ -37,13 +40,9 @@ class Hexagon extends React.Component {
     };
   }
 
-  handleClick() {
-    this.setState({value: <QuestionBox />})
-  }
-
   render() {
     return (
-      <div className={this.props.color} onClick={ () => this.handleClick()}> <span></span>
+      <div className={this.props.color} onClick={this.props.onClick}> <span></span>
         {this.props.number}
         {this.state.value}
       </div>

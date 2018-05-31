@@ -16,8 +16,8 @@ class LandingPage extends React.Component {
           <p className = "LandingPage-text">
             Please choose a team using your phone
           </p>
-          <TeamBox color="teamBox-blue"/>
-          <TeamBox color="teamBox-red"/>
+          <TeamBox color="LandingPage-teamBox-blue"/>
+          <TeamBox color="LandingPage-teamBox-red"/>
           <StartButton onClick={this.props.onClick}/>
       </div>
     );

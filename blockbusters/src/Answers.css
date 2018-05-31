@@ -1,0 +1,41 @@
+.Answer {
+  background-color: grey;
+  width: 300px;
+  margin: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  float: left;
+}
+
+.CorrectAnswer {
+    background-color: green;
+    width: 300px;
+    margin: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    float: left;
+  }
+
+.TeamBlueAnswer {
+    background-color: green;
+    width: 300px;
+    margin: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    float: left;
+    border: 10px solid blue
+  }
+
+  .TeamRedAnswer{
+      background-color: green;
+      width: 300px;
+      margin: 25px;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      float: left;
+      border: 10px solid red
+    }
