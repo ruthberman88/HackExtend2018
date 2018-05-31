@@ -13,11 +13,12 @@ class Board extends React.Component {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
+      value: "Board"
     };
   }
 
   handleClick() {
-    <QuestionBox />
+    this.setState({value:"QuestionBox"})
     //const squares = this.state.squares.slice();
     //this.setState({squares: squares});
   }
@@ -32,6 +33,9 @@ class Board extends React.Component {
   }
 
   render() {
+    if (this.state.value === "QuestionBox") {
+      return <QuestionBox onClick ={() => this.setState({value: "Board"})}/>
+    }
     return (
       <div>
         <div className="board-row">
