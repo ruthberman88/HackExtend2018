@@ -1,6 +1,5 @@
 import React from 'react';
 import './Answers.css';
-import Button from '@material-ui/core/Button';
 
 class Answers extends React.Component {
   constructor(props) {
@@ -41,9 +40,6 @@ class Answers extends React.Component {
         {Object.keys(answers).map((ans, index) => (
             <Answer key={ans} lable={ans} text={answers[ans].text} color={answers[ans].color} />
         ))}
-        <Button variant="raised" color="primary" onClick={() => this.handleThing()}>
-            Do
-        </Button>
       </div>
     );
   }
