@@ -1,36 +1,43 @@
 import React from 'react';
 import logo from './logo.svg';
 import './LandingPage.css';
+import UserCounter from './UserCounter.js'
 
-class App extends React.Component {
-  renderTeamBox {
-    return <TeamBox />;
-  }
+class LandingPage extends React.Component {
+
   render() {
     return (
       <div className="LandingPage">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to BlockBusters!</h1>
-        </header>
         <p className="App-intro">
           This is the link you need
+          <TeamBox />
+          <TeamBox />
+          <StartButton />
         </p>
-      </div>
-      <div>
-      {this.renderTeamBox}
-      {this.renderTeamBox}
       </div>
     );
   }
 }
 
 class TeamBox extends React.Component {
-  render(){
-    <p>
-    "This is the teambox"
-    </p>
+  render() {
+    return(
+      <div>
+        This is the teambox
+        Counter:
+        <UserCounter />
+      </div>
+    )
   }
-
 }
-/*export default App;
+
+class StartButton extends React.Component {
+  render() {
+    return (
+      <button className="startButton" onClick={() => alert('click')}>
+      </button>
+    );
+  }
+}
+
+export default LandingPage;
