@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './LandingPage.css';
 
-class App extends Component {
+class App extends React.Component {
+  renderTeamBox {
+    return <TeamBox />;
+  }
   render() {
     return (
       <div className="LandingPage">
@@ -14,11 +17,20 @@ class App extends Component {
           This is the link you need
         </p>
       </div>
+      <div>
+      {this.renderTeamBox}
+      {this.renderTeamBox}
+      </div>
     );
   }
 }
 
 class TeamBox extends React.Component {
-  
+  render(){
+    <p>
+    "This is the teambox"
+    </p>
+  }
+
 }
 /*export default App;
