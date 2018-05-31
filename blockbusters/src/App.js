@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import LandingPage from './LandingPage.js'
-import GamePage from './GamePage.js'
+import { BrowserRouter, Route } from 'react-router-dom';
+import LandingPage from './LandingPage.js';
+import GamePage from './GamePage.js';
+import MobilePage from './MobilePage.js';
 import './App.css';
 
 
@@ -17,9 +19,17 @@ class App extends Component {
   }
 
   render() {
+    console.log()
     console.log("App")
     console.log(this)
-    return this.state.value;
+    return (
+        <BrowserRouter>
+            <div>
+                <Route exact path="/" render={() => this.state.value} />
+                <Route exact path='/player' component={MobilePage} />
+            </div>
+        </BrowserRouter>
+    );
   }
 }
 
