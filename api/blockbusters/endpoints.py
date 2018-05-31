@@ -49,11 +49,14 @@ def question_begin():
 @app.route('/question/finish')
 def question_finish():
     votes = db.session.query(Vote.team, Vote.value, func.count(Vote.value)).group_by(Vote.team, Vote.value).all()
-    votes_dict = {}
+
+    vote_per_team = {}
     for team, value, num in votes:
-        votes_dict.setdefault(team, {}).setdefault(value, num)
+        curr_vote, curr_num = vote_per_team.get(team, (None, 0))
+        if num > curr_num:
+            vote_per_team[team] = (value, num)
 
     Vote.query.delete()
     db.session.commit()
 
-    return jsonify(status='OK', response=votes_dict)
+    return jsonify(status='OK', response={team: val[0] for team, val in vote_per_team.items()})

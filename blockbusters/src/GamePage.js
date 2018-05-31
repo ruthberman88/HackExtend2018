@@ -13,12 +13,16 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: <Hexagon color="hexagon-grey" number="1" onClick={() => this.handleClick()} />
+      value: <Hexagon color="hexagon-grey" number="1" onClick={() => this.handleClick(false)} />
     }
   }
 
-  handleClick(){
-    this.setState({value: <QuestionBox/>})
+  handleClick(isAnswer){
+    if (isAnswer) {
+        this.setState({value: <Hexagon color="hexagon-grey" number="1" onClick={() => this.handleClick(false)} />})
+    } else {
+        this.setState({value: <QuestionBox onClick={() => this.handleClick(true)} />})
+    }
   }
 
     render () {

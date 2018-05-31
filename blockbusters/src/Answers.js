@@ -1,13 +1,49 @@
 import React from 'react';
 import './Answers.css';
+import Button from '@material-ui/core/Button';
 
 class Answers extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      answers: {
+        "A": {"text": "here", "color": "Answer"},
+        "B": {"text": "there", "color": "Answer"},
+        "C": {"text": "everywhere", "color": "Answer"},
+    }
+    }
+  }
+
+  handleThing() {
+    clearInterval(this.intervalId);
+    this.intervalId = undefined;
+    this.setState({
+        answers: {...this.state.answers,
+                  A: {...this.state.answers.A,
+                      color: "TeamBlueAnswer"}}
+    });
+  }
+
+  componentDidMount() {
+    this.intervalId = setInterval(() => this.handleThing(), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalId);
+  }
+
+
   render() {
+    var answers = this.state.answers;
+
     return (
       <div>
-        <Answer lable="A. " text="Here"/>
-        <Answer lable="B. " text="There"/>
-        <Answer lable="C. " text="Everywhere"/>
+        {Object.keys(answers).map((ans, index) => (
+            <Answer key={ans} lable={ans} text={answers[ans].text} color={answers[ans].color} />
+        ))}
+        <Button variant="raised" color="primary" onClick={() => this.handleThing()}>
+            Do
+        </Button>
       </div>
     );
   }
@@ -16,9 +52,8 @@ class Answers extends React.Component {
 class Answer extends React.Component {
   render (){
     return (
-      <div className="Answer">
-      {this.props.lable}
-      {this.props.text}
+      <div className={this.props.color} style={{border: "10px solid blue"}}>
+      {this.props.lable}. {this.props.text}
       </div>
     );
   }
