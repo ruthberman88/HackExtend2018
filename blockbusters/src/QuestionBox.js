@@ -103,7 +103,7 @@ class QuestionBox extends React.Component {
 
 class Question extends React.Component {
   render () {
-    return <div> {this.props.text} </div>;
+    return <div className="Question"> {this.props.text} </div>;
   }
 }
 
