@@ -12,29 +12,47 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null),
+      squares: Array(9).fill("gray"),
+      currTeam: 0,
+      currSquare: null,
       value: "Board"
     };
   }
 
-  handleClick() {
-    this.setState({value:"QuestionBox"})
+  handleClick(i) {
     //const squares = this.state.squares.slice();
-    //this.setState({squares: squares});
+    //squares[i] = this.state.currTeam;
+    this.setState({
+        value: "QuestionBox",
+        currTeam: 1 - this.state.currTeam,
+        currSquare: i
+    })
+
+    // this.setState({squares: squares});
+  }
+
+  handleReturnFromQuestion(winningTeam) {
+    const squares = this.state.squares.slice();
+    squares[this.state.currSquare] = winningTeam;
+    this.setState({
+        value: "Board",
+        squares: squares
+    });
   }
 
   renderSquare(i) {
     return (
       <Square
+      color={this.state.squares[i]}
       value={i+1}
-      onClick={() => this.handleClick()}
+      onClick={() => this.handleClick(i)}
       />
     );
   }
 
   render() {
     if (this.state.value === "QuestionBox") {
-      return <QuestionBox onClick ={() => this.setState({value: "Board"})}/>
+      return <QuestionBox onClick ={(winningTeam) => this.handleReturnFromQuestion(winningTeam)}/>
     }
     return (
       <div>
@@ -61,8 +79,11 @@ class Board extends React.Component {
 
 class Square extends React.Component {
   render() {
+    var myStyle = {
+        backgroundColor: this.props.color
+    }
     return(
-    <button className="square" onClick={this.props.onClick}>
+    <button className="square" onClick={this.props.onClick} style={myStyle}>
       {this.props.value}
     </button>
     );

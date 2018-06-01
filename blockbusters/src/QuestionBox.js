@@ -14,7 +14,7 @@ class QuestionBox extends React.Component {
 
   showAnswer() {
     // answer = this.getAnswer();
-
+    this.props.onClick("blue");
   }
 
   render() {
@@ -24,7 +24,7 @@ class QuestionBox extends React.Component {
           <TeamBox />
           <Question />
           <Answers/>
-          <Button variant="raised" color="primary" onClick={this.props.onClick}>
+          <Button variant="raised" color="primary" onClick={() => this.showAnswer()}>
                 Time is up
           </Button>
 
