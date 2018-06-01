@@ -9,17 +9,27 @@ class LandingPage extends React.Component {
     console.log("LandingPage")
     console.log(this)
     return (
+    <div>
       <div className="LandingPage">
-          <p className="LandingPage-link">
-            This is the link you need
-          </p>
-          <p className = "LandingPage-text">
-            Please choose a team using your phone
-          </p>
-          <TeamBox color="LandingPage-teamBox-blue"/>
-          <TeamBox color="LandingPage-teamBox-red"/>
-          <StartButton onClick={this.props.onClick}/>
+        <p className="LandingPage-title">
+          This is the link you need to go to
+        </p>
+        <p className="LandingPage-link">
+          https://d7ca3384.ngrok.io/player
+        </p>
+        <p className = "LandingPage-text">
+          Please choose a team using your phone and then click start
+        </p>
       </div>
+
+      <div className="LandingPage-frame">
+        <TeamBox color="LandingPage-teamBox-blue" name="blue"/>
+        <TeamBox color="LandingPage-teamBox-red" name="red"/>
+      </div>
+      <div className="startButton">
+        <StartButton onClick={this.props.onClick}/>
+      </div>
+    </div>
     );
   }
 }
@@ -28,9 +38,7 @@ class TeamBox extends React.Component {
   render() {
     return(
       <div className = {this.props.color}>
-        This is the teambox
-        Counter:
-        <UserCounter />
+      {this.props.name}
       </div>
     )
   }
