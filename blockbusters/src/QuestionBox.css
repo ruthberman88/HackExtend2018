@@ -27,17 +27,14 @@
   color: white;
   font-size: xx-large;
   font-weight: bold;
-  border: 8px solid;
+  border: 8px solid gray;
 }
 
 .Question {
-  background-color: grey;
-  width: 75.7%;
-  height: 50px;
-  margin: 32px;
-  font-size: 24px;
+  background-color: purple;
+  font-size: xx-large;
   font-weight: bold;
   text-align: center;
   vertical-align: middle;
-  color: purple;
+  color: white;
 }

@@ -8,146 +8,146 @@ import ReactCountdownClock from 'react-countdown-clock'
 
 const questions = [
     {
-        q: 'my question',
+        q: 'How many pizzas were ordered?',
+        a: {
+            A: '100',
+            B: '53',
+            C: '42'
+        },
+        correct: 'B'
+    },
+    {
+        q: "How many mentors participated in this year's hackathon?",
         a: {
             A: 'asd',
             B: 'asd',
             C: 'asd'
         },
-        correct: 'A'
+        correct: 'C'
     },
     {
-        q: 'my question',
+        q: 'What is the address of this building?',
         a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
+            A: 'Ben Yehuda 32',
+            B: 'Hayarkon 32',
+            C: 'Bugrashov 32'
         },
         correct: 'A'
     },
     {
-        q: 'my question',
+        q: 'Where is the farthest place someone came from to this event',
         a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
+            A: 'Kfar Yasif',
+            B: 'Kahal',
+            C: 'Haniel'
+        },
+        correct: 'B'
+    },
+    {
+        q: 'When was the last hack extend hackathon?',
+        a: {
+            A: 'May 2017',
+            B: 'August 2017',
+            C: 'September 2016'
+        },
+        correct: 'C'
+    },
+    {
+        q: 'Where was the last hack extend hackathon?',
+        a: {
+            A: 'WIX hub',
+            B: 'Google campus',
+            C: 'Beit Hatfutsot'
+        },
+        correct: 'C'
+    },
+    {
+        q: 'Who is NOT a sponsor of this event?',
+        a: {
+            A: 'Smore',
+            B: 'ironSource',
+            C: 'ZenCity'
+        },
+        correct: 'B'
+    },
+    {
+        q: 'What was the largest hackathon shirt size?',
+        a: {
+            A: 'XXL',
+            B: 'XL',
+            C: 'L'
         },
         correct: 'A'
     },
     {
-        q: 'my question',
+        q: 'What is the code to the bathroom?',
         a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
+            A: '1006*',
+            B: '1106#',
+            C: '1116#'
+        },
+        correct: 'B'
+    },
+    {
+        q: 'How many projects were presented today?',
+        a: {
+            A: '20',
+            B: '17',
+            C: '12'
+        },
+        correct: 'B'
+    },
+    {
+        q: 'What were the colors of the balloons before they flew away?',
+        a: {
+            A: 'Red, Yellow, Green',
+            B: 'Purple, Yellow, Blue',
+            C: 'Blue, Purple, Orange'
+        },
+        correct: 'B'
+    },
+    {
+        q: 'What is the number 3?',
+        a: {
+            A: '1',
+            B: '1.5',
+            C: '3'
+        },
+        correct: 'C'
+    },
+    {
+        q: 'How many meals did we have during this hackathon?',
+        a: {
+            A: '5',
+            B: '4',
+            C: '7'
         },
         correct: 'A'
     },
     {
-        q: 'my question',
+        q: 'What is the most common WiFi password in this room?',
         a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
+            A: 'Fortinet',
+            B: 'ONEWORDALLCAPS',
+            C: 'choochoo'
         },
-        correct: 'A'
+        correct: 'C'
     },
     {
-        q: 'my question',
+        q: 'How many participants took part in this event?',
         a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
+            A: '~100',
+            B: '~70',
+            C: '~120'
         },
-        correct: 'A'
+        correct: 'B'
     },
     {
-        q: 'my question',
+        q: 'Can you see the sea from the roof?',
         a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
-        },
-        correct: 'A'
-    },
-    {
-        q: 'my question',
-        a: {
-            A: 'asd',
-            B: 'asd',
-            C: 'asd'
+            A: 'yes',
+            B: 'no',
+            C: 'maybe'
         },
         correct: 'A'
     },
@@ -235,14 +235,13 @@ class QuestionBox extends React.Component {
 
   render() {
     return (
-      <Grid container justify='center'>
+      <Grid container justify='center' spacing={32}>
+        <Grid item xs={12}>
+            <div style={{ minHeight: "20px" }} />
+        </Grid>
         <Grid item xs={12}>
             <Grid container justify='center'>
-                <Grid item xs={3}>
-                    <ReactCountdownClock seconds={10}
-                                         size={70}/>
-                </Grid>
-                <Grid item xs={9}>
+                <Grid item xs={12}>
                     <Question text={this.state.question} />
                 </Grid>
             </Grid>
@@ -256,6 +255,7 @@ class QuestionBox extends React.Component {
                 ))}
             </Grid>
         </Grid>
+        <ReactCountdownClock seconds={10} size={200} style={{ margin: "0 auto" }}/>
       </Grid>
     );
   }
@@ -263,7 +263,7 @@ class QuestionBox extends React.Component {
 
 class Question extends React.Component {
   render () {
-    return <h1> {this.props.text} </h1>;
+    return <h1 className="Question"> {this.props.text} </h1>;
   }
 }
 

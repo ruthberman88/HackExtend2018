@@ -51,7 +51,8 @@ def user_vote():
         db.session.add(Vote(user=session['user'], team=session['team'], value=value))
         db.session.commit()
     except Exception as e:
-        return make_response(jsonify(status='Error', error=str(e)), 401)
+        return make_response(jsonify(status='Error',
+                                     error='You cannot vote twice in the same round, wait for the next question'), 401)
 
     return jsonify(status='OK')
 
