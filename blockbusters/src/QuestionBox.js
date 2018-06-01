@@ -4,21 +4,162 @@ import UserCounter from './UserCounter'
 import Button from '@material-ui/core/Button';
 
 
-const questions = ["Where is Pusheen!", "Where is Pusheen!!!", "Pusheen", "Wis Pusheen", "re is Pusheen",
-                   "Where is Pusheen!!", "Where is Pusheen!!!!", "is Pusheen" ,"Wre is Pusheen"]
+const questions = [
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+    {
+        q: 'my question',
+        a: {
+            A: 'asd',
+            B: 'asd',
+            C: 'asd'
+        },
+        correct: 'A'
+    },
+
+]
 
 
 class QuestionBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      question: questions[props.question],
-      answers: {
-        "A": "here",
-        "B": "there",
-        "C": "everywhere",
-      },
-      correctAnswer: "A",
+      question: questions[props.question].q,
+      answers: questions[props.question].a,
+      correctAnswer: questions[props.question].correct,
       additionalStyle: {
         "A": {},
         "B": {},
