@@ -52,7 +52,10 @@ class Board extends React.Component {
 
   render() {
     if (this.state.value === "QuestionBox") {
-      return <QuestionBox onClick ={(winningTeam) => this.handleReturnFromQuestion(winningTeam)}/>
+      return <QuestionBox
+                question={this.state.currSquare}
+                team={this.state.currTeam}
+                onClick={(winningTeam) => this.handleReturnFromQuestion(winningTeam)}/>
     }
     return (
       <div>
