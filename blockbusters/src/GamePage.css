@@ -3,7 +3,7 @@
 }
 
 .square {
-  background: #fff;
+  background: grey;
   border: 1px solid #999;
   float: left;
   font-size: 24px;
@@ -26,13 +26,7 @@
 }
 
 .frame {
-  background-color: white;
-  //opacity: 0;
-  font-size: 24px;
-  font-weight: bold;
-  color: white;
-  margin-left: 50%;
-  margin-right: 50%;
+  margin-left: 40%;
   margin-top: 20%;
   border: 8px solid;
   border-top-color: blue;
@@ -41,4 +35,8 @@
   border-right-color:red;
   width: 160px;
   height: 160px;
+}
+
+.title {
+
 }

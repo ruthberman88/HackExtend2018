@@ -12,7 +12,7 @@ class Board extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill("gray"),
+      squares: Array(16).fill("gray"),
       currTeam: 0,
       currSquare: null,
       value: "Board"
@@ -66,22 +66,22 @@ class Board extends React.Component {
           {this.renderSquare(3)}
         </div>
         <div className="board-row">
-          {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
           {this.renderSquare(6)}
+          {this.renderSquare(7)}
         </div>
         <div className="board-row">
-          {this.renderSquare(7)}
           {this.renderSquare(8)}
           {this.renderSquare(9)}
           {this.renderSquare(10)}
+          {this.renderSquare(11)}
         </div>
         <div className="board-row">
-          {this.renderSquare(11)}
           {this.renderSquare(12)}
           {this.renderSquare(13)}
           {this.renderSquare(14)}
+          {this.renderSquare(15)}
         </div>
       </div>
     );
