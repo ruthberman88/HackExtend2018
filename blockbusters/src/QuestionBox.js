@@ -2,6 +2,8 @@ import React from 'react';
 import './QuestionBox.css';
 import UserCounter from './UserCounter'
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import ReactCountdownClock from 'react-countdown-clock'
 
 
 const questions = [
@@ -165,8 +167,7 @@ class QuestionBox extends React.Component {
         "B": {},
         "C": {}
       },
-      winner: "black",
-      gotAnswer: false
+      winner: "black"
     }
   }
 
@@ -183,8 +184,7 @@ class QuestionBox extends React.Component {
 
   showCorrectAnswer() {
     clearInterval(this.intervalId);
-    this.intervalId = undefined;
-    //this.intervalId = setInterval(() => this.goBack(), 3000);
+    this.intervalId = setInterval(() => this.goBack(), 3000);
 
     var newStyles = Object.assign({}, this.state.additionalStyle);
     newStyles[this.state.correctAnswer] = {...newStyles[this.state.correctAnswer], backgroundColor: "green"};
@@ -194,13 +194,8 @@ class QuestionBox extends React.Component {
 
 
   showTeamAnswers() {
-    console.log('showTeamAnswers called');
-    if (this.state.gotAnswer) {
-        return this.goBack();
-    }
-
     clearInterval(this.intervalId);
-    this.intervalId = setInterval(() => this.showCorrectAnswer(), 3000);
+    this.intervalId = setInterval(() => this.showCorrectAnswer(), 2000);
 
     this.getAnswer().then(
         function(response) {
@@ -221,8 +216,7 @@ class QuestionBox extends React.Component {
 
             this.setState({
                 additionalStyle: newStyles,
-                winner: winner,
-                gotAnswer: true
+                winner: winner
             })
         }.bind(this)
     )
@@ -241,23 +235,35 @@ class QuestionBox extends React.Component {
 
   render() {
     return (
-      <div className="QuestionBox">
-          <Question text={this.state.question} />
-          {Object.keys(this.state.answers).map((key, index) => (
-            <div className="Answer" key={key} style={this.state.additionalStyle[key]}>{key}. {this.state.answers[key]}</div>
-          ))}
-          <Button variant="raised" color="primary" onClick={() => this.showTeamAnswers()}>
-                Time is up
-          </Button>
-
-      </div>
+      <Grid container justify='center'>
+        <Grid item xs={12}>
+            <Grid container justify='center'>
+                <Grid item xs={3}>
+                    <ReactCountdownClock seconds={10}
+                                         size={70}/>
+                </Grid>
+                <Grid item xs={9}>
+                    <Question text={this.state.question} />
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid item xs={12}>
+            <Grid container justify='center' spacing={16}>
+                {Object.keys(this.state.answers).map((key, index) => (
+                    <Grid item xs={4} key={key}>
+                        <div className="Answer" key={key} style={this.state.additionalStyle[key]}>{key}. {this.state.answers[key]}</div>
+                    </Grid>
+                ))}
+            </Grid>
+        </Grid>
+      </Grid>
     );
   }
 }
 
 class Question extends React.Component {
   render () {
-    return <div className="Question"> {this.props.text} </div>;
+    return <h1> {this.props.text} </h1>;
   }
 }
 
