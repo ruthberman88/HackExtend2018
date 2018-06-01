@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import LandingPage from './LandingPage.js';
 import GamePage from './GamePage.js';
 import MobilePage from './MobilePage.js';
+import VotingPage from './MobileVoting.js'
 import './App.css';
 
 
@@ -27,6 +28,7 @@ class App extends Component {
             <div>
                 <Route exact path="/" render={() => this.state.value} />
                 <Route exact path='/player' component={MobilePage} />
+                <Route exact path='/player/voting' component={VotingPage} />
             </div>
         </BrowserRouter>
     );

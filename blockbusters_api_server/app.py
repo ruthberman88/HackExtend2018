@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO, emit
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='frontend')
 app.config['SECRET_KEY'] = 'secret!'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 db = SQLAlchemy(app)
@@ -28,8 +28,8 @@ socketio = SocketIO(app)
 # def test_disconnect():
 #     print('Client disconnected')
 
-import blockbusters.models
-import blockbusters.endpoints
+import models
+import endpoints
 
 import logging
 logging.basicConfig()

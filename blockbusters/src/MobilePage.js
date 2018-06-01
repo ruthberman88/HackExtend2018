@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Grid from '@material-ui/core/Grid';
+import { Redirect } from 'react-router-dom';
 
 const styles = theme => ({
   root: {
@@ -20,7 +21,8 @@ class MobilePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        user: null
+        user: null,
+        loggedIn: false
     }
   }
 
@@ -30,10 +32,15 @@ class MobilePage extends React.Component {
 
   joinTeam(team) {
     console.log("User", this.state.user, "joins team", team);
+    this.setState({loggedIn: true});
   }
 
   render() {
     const {classes} = this.props
+
+    if (this.state.loggedIn) {
+        return <Redirect to="/player/voting" />
+    }
 
     return (
         <Grid container className={classes.root} justify="center" spacing={16}>

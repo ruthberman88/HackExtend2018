@@ -1,8 +1,24 @@
+import os
 from app import app, db
 from models import Vote
-from flask import request, session, jsonify, make_response
+from flask import request, session, jsonify, make_response, send_from_directory
 
 from sqlalchemy.sql import func
+
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    app.logger.info(path)
+    app.logger.info(os.path.split(path))
+    # path = os.path.join(os.path.split(path)[1:])
+    app.logger.info('path {}'.format(path))
+    return send_from_directory(os.path.join(app.root_path, 'frontend'), path)
+
+
+default_header = {
+    'Content-Type': 'application/json'
+}
 
 
 @app.route('/login', methods=['POST'])
@@ -16,7 +32,7 @@ def user_login():
 
     session['user'] = req['user']
     session['team'] = req['team']
-    return jsonify(status='OK')
+    return make_response(jsonify(status='OK'), 200, default_header)
 
 
 @app.route('/user/vote', methods=['POST'])
