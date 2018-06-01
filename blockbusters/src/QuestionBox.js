@@ -24,15 +24,14 @@ class QuestionBox extends React.Component {
         "B": {},
         "C": {}
       },
-      winner: "black"
+      winner: "black",
+      gotAnswer: false
     }
   }
 
 
   getAnswer() {
-    // TODO: ask backend
-    return {"blue": "A",
-            "red": "A"}
+    return fetch('/question/finish').then(res => res.json())
   }
 
   goBack() {
@@ -43,7 +42,8 @@ class QuestionBox extends React.Component {
 
   showCorrectAnswer() {
     clearInterval(this.intervalId);
-    this.intervalId = setInterval(() => this.goBack(), 3000);
+    this.intervalId = undefined;
+    //this.intervalId = setInterval(() => this.goBack(), 3000);
 
     var newStyles = Object.assign({}, this.state.additionalStyle);
     newStyles[this.state.correctAnswer] = {...newStyles[this.state.correctAnswer], backgroundColor: "green"};
@@ -53,32 +53,45 @@ class QuestionBox extends React.Component {
 
 
   showTeamAnswers() {
+    console.log('showTeamAnswers called');
+    if (this.state.gotAnswer) {
+        return this.goBack();
+    }
+
     clearInterval(this.intervalId);
     this.intervalId = setInterval(() => this.showCorrectAnswer(), 3000);
 
-    var answer = this.getAnswer();
+    this.getAnswer().then(
+        function(response) {
+            var answer = response.response;
+            console.log("got answer", answer);
+            var newStyles = Object.assign({}, this.state.additionalStyle);
+            newStyles[answer["blue"]] = {...newStyles[answer["blue"]], borderTopColor: "blue"};
+            newStyles[answer["red"]] = {...newStyles[answer["red"]], borderBottomColor: "red"};
 
-    var newStyles = Object.assign({}, this.state.additionalStyle);
-    newStyles[answer["blue"]] = {...newStyles[answer["blue"]], borderTopColor: "blue"};
-    newStyles[answer["red"]] = {...newStyles[answer["red"]], borderBottomColor: "red"};
+            var currTeam = ["blue", "red"][this.props.team];
+            var otherTeam = ["red", "blue"][this.props.team];
+            var winner = this.state.winner;
+            if (answer[currTeam] == this.state.correctAnswer) {
+                winner = currTeam;
+            } else if (answer[otherTeam] == this.state.correctAnswer) {
+                winner = otherTeam
+            }
 
-    var currTeam = ["blue", "red"][this.props.team];
-    var otherTeam = ["red", "blue"][this.props.team];
-    var winner = this.state.winner;
-    if (answer[currTeam] == this.state.correctAnswer) {
-        winner = currTeam;
-    } else if (answer[otherTeam] == this.state.correctAnswer) {
-        winner = otherTeam
-    }
-
-    this.setState({
-        additionalStyle: newStyles,
-        winner: winner
-    })
+            this.setState({
+                additionalStyle: newStyles,
+                winner: winner,
+                gotAnswer: true
+            })
+        }.bind(this)
+    )
   }
 
   componentDidMount() {
-    //this.intervalId = setInterval(() => this.showTeamAnswers(), 1000);
+    fetch("/question/begin").then(function(res) {
+        console.log('called begin question, you have 10 seconds');
+        this.intervalId = setInterval(() => this.showTeamAnswers(), 10000);
+    }.bind(this));
   }
 
   componentWillUnmount() {

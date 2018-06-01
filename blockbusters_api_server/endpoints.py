@@ -9,10 +9,12 @@ from sqlalchemy.sql import func
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
-    app.logger.info(path)
-    app.logger.info(os.path.split(path))
+    app.logger.info('got req for path: {}'.format(path))
+    #app.logger.info(os.path.split(path))
     # path = os.path.join(os.path.split(path)[1:])
     app.logger.info('path {}'.format(path))
+    if path in {'', 'player', 'player/voting'}:
+        path = 'index.html'
     return send_from_directory(os.path.join(app.root_path, 'frontend'), path)
 
 

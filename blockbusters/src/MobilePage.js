@@ -32,6 +32,20 @@ class MobilePage extends React.Component {
 
   joinTeam(team) {
     console.log("User", this.state.user, "joins team", team);
+    fetch("/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({"user": this.state.user, "team": team}),
+        credentials: "include"
+    }).then(
+        response => response.json()
+    ).then(
+        response => (
+            response.status == 'OK' ?
+                this.setState({loggedIn: true}) :
+                alert(response.error)
+        )
+    ).catch(error => console.log(error));
     this.setState({loggedIn: true});
   }
 

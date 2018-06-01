@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import { Redirect } from 'react-router-dom';
 
 
@@ -22,7 +23,29 @@ class VotingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+        statusText: "Cast your vote"
     }
+  }
+
+  vote(value) {
+    console.log("voting for", value);
+    fetch("/user/vote", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({"value": value}),
+        credentials: "include"
+    }).then(
+        response => response.json()
+    ).then(
+        function (response) {
+            if (response.status == 'OK') {
+                this.setState({loggedIn: true,
+                               statusText: 'Your vote was cast, wait for the next round'});
+            } else {
+                this.setState({statusText: response.error})
+            }
+        }.bind(this)
+    ).catch(error => console.log(error));
   }
 
   render() {
@@ -38,13 +61,24 @@ class VotingPage extends React.Component {
                         {[0, 1].map(row => (
                             <Grid item xs={6} className={classes.button} key={row}>
                                 <Grid container justify="center">
-                                    <Button variant="raised" >{answers[row][col]}</Button>
+                                    <Button
+                                        variant="raised"
+                                        onClick={() => this.vote(answers[row][col])}>
+                                            {answers[row][col]}
+                                    </Button>
                                 </Grid>
                             </Grid>
                         ))}
                     </Grid>
                 </Grid>
             ))}
+            <Grid item xs={12}>
+                <Grid container justify='center'>
+                    <Grid item xs={6}>
+                        <Paper>{this.state.statusText}</Paper>
+                    </Grid>
+                </Grid>
+            </Grid>
         </Grid>
     )
   }
